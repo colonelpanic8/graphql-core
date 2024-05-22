@@ -1308,6 +1308,7 @@ class GraphQLInputObjectType(GraphQLNamedType):
         extensions: dict[str, Any] | None = None,
         ast_node: InputObjectTypeDefinitionNode | None = None,
         extension_ast_nodes: Collection[InputObjectTypeExtensionNode] | None = None,
+        is_one_of: bool = False,
     ) -> None:
         super().__init__(
             name=name,
@@ -1316,6 +1317,7 @@ class GraphQLInputObjectType(GraphQLNamedType):
             ast_node=ast_node,
             extension_ast_nodes=extension_ast_nodes,
         )
+        self.is_one_of = is_one_of
         self._fields = fields
         if out_type is not None:
             self.out_type = out_type  # type: ignore
